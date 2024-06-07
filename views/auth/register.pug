@@ -4,6 +4,12 @@ block content
     .ui.middle.aligned.center.aligned.grid
         .six.wide.column
             h1 Inscription
+            if errors && errors.length > 0
+                each error in errors
+                    p= error
+            if sucess && sucess.length > 0
+                each suces in sucess
+                    p= suces
             form.ui.large.form(method="post", action="/auth/register")
                 .ui.stacked.segment
                     +field('text', 'firstName', 'First name')

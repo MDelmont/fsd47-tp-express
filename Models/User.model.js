@@ -20,10 +20,10 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 },{
-  timestamps: true, // Permet d'avoir 3 nouveaux champs : "createdAt"; "updatedAt"; "__v";
+  timestamps: true, // get 3 fields in database : "createdAt"; "updatedAt"; "__v";
 })
 
-// Création d'un objet Modèle basé sur le schéma
+// cearte model object
 const UserModel = mongoose.model("Users", userSchema)
 
 export default UserModel

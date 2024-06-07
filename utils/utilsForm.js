@@ -1,14 +1,14 @@
 /**
- * 
+ * check filed in form
  * @param {*} req 
  * @param {*} requiredFields List of string
- * @returns 
+ * @returns list of missing field
  */
 const checkMissingField = (req, requiredFields) => {
     const missingFields = [];
   
     for (const field of requiredFields) {
-        if (req.body[field] === null || req.body[field] === undefined) {
+        if (req.body[field] === null || req.body[field] === undefined || req.body[field].trim() === "") {
             missingFields.push(field);
         }
     }
@@ -29,7 +29,7 @@ const checkPasswordCondition = async (password,password2) => {
     }
     // Check length of password
     if (password.length < 6) {
-      errors.push({ msg: "La taille du password doit etre au minimum de 6 caractère" });
+      errors.push({ msg: "La taille du mot de passe doit etre au minimum de 6 caractère" });
     }
     return errors
 }

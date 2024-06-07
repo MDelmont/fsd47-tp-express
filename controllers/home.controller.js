@@ -1,13 +1,14 @@
-const  home = async (req, res) => {
-  res.render("inscription", { token: req.session.token });
-}
-
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 const  getDashboardController = async (req, res) => {
+  // render dashboard page
   res.render("dashboard", { token: req.session.token });
 }
 
 
 export default  {
-  home,
   getDashboardController
 }

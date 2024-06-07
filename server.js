@@ -35,8 +35,8 @@ app.use(passport.session());
 
 app.use(flash());
 app.use((req, res, next) => {
-  res.locals.flash ={ succes: req.flash("success")};
-  res.locals.messages = req.flash(); 
+  res.locals.errors = req.flash("errors");
+  res.locals.success = req.flash("success");
   next();
 });
 app.use(express.static(path.join(__dirname, "public")));
@@ -44,7 +44,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // ==========
 // App routers
 // ==========
-
 app.use("/", route);
 app.use("/auth", authRouter);
 // ==========
@@ -55,6 +54,10 @@ app.listen(APP_PORT, () => {
   console.log(`App listening at http://${APP_HOSTNAME}:${APP_PORT}`);
 });
 
+
+// ==========
+// Connect DataBase
+// ==========
 mongoose.connect(MONGO_URI, {
 })
 .then(() => console.log("Connexion avec la BDD réalisé avec succès"))
